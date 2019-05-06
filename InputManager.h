@@ -12,10 +12,10 @@ public:
 	void initialize( void ) noexcept;
 	bool isValid( void ) const noexcept;
 
-	void keyDown( const unsigned int input ) noexcept;
-	void keyUp( const unsigned int input ) noexcept;
+	void keyDown(_In_ const unsigned int input ) noexcept;
+	void keyUp(_In_ const unsigned int input ) noexcept;
 
-	bool isKeyDown( const unsigned int input ) const noexcept;
+	bool isKeyDown(_In_ const unsigned int input ) const noexcept;
 
 private:
 	bool _keys[KeyTypeLength];

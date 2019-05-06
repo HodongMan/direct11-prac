@@ -54,6 +54,8 @@ bool SystemManager::initialize( void ) noexcept
 	}
 
 	_isValid = true;
+
+	return true;
 }
 
 
@@ -64,6 +66,7 @@ bool SystemManager::shutDown( const bool isWindowShutdown ) noexcept
 		_graphics->shutDown();
 		delete _graphics;
 		_graphics = nullptr;
+
 	}
 
 	if ( nullptr != _input )
@@ -76,6 +79,8 @@ bool SystemManager::shutDown( const bool isWindowShutdown ) noexcept
 	{
 		shutDownWindows();
 	}
+
+	return true;
 }
 
 void SystemManager::run( void ) noexcept
@@ -142,6 +147,8 @@ LRESULT CALLBACK SystemManager::MessageHandler( HWND hwnd, UINT uMsg, WPARAM wPa
 		}
 		break;
 	}
+
+	return 0;
 }
 
 void SystemManager::initializeWindows( int& screenWidth, int& screenHeight ) noexcept
@@ -222,7 +229,7 @@ void SystemManager::shutDownWindows( void ) noexcept
 	applicationHandle = nullptr;
 }
 
-LRESULT CALLBACK WndProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam ) noexcept
+LRESULT CALLBACK WndProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
 	switch( uMsg )
 	{
@@ -245,7 +252,7 @@ LRESULT CALLBACK WndProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam ) n
 				return 0;
 			}
 
-			return applicationHandle->MessageHandler( hwnd, uMsg, wParam, lParam );
+			return applicationHandle->MessageHandler( hwnd, uMsg, wParam, lParam , true );
 		}
 		break;
 	}

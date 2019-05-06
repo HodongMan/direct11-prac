@@ -26,6 +26,11 @@ void InputManager::initialize( void ) noexcept
 	_isValid = true;
 }
 
+bool InputManager::isValid( void ) const noexcept
+{
+	return _isValid;
+}
+
 void InputManager::keyDown( const unsigned int input ) noexcept
 {
 	_keys[input] = true;
