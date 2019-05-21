@@ -13,7 +13,7 @@ GraphicsManager::GraphicsManager( const GraphicsManager& rhs )
 
 GraphicsManager::~GraphicsManager( void )
 {
-	
+		
 }
 
 bool GraphicsManager::initialize( const int screenWidth, const int screenHeight, HWND hwnd ) noexcept
