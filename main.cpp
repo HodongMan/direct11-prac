@@ -19,6 +19,6 @@ int APIENTRY wWinMain( _In_ HINSTANCE hInstance,
 	systemManager->shutDown( true );
 	delete systemManager;
 	systemManager = nullptr;
-
+	
 	return 0;
 }
