@@ -9,20 +9,20 @@ public:
 	D3Object( const D3Object& rhs );
 	virtual ~D3Object( void );
 
-	bool initialize( int screenWidth, int screenHeight, bool vsync, HWND hWnd, float screenDepth, float screenNear ) noexcept;
+	bool initialize( int screenWidth, int screenHeight, bool vsync, HWND hWnd, bool fullScreen, float screenDepth, float screenNear ) noexcept;
 	bool shutDown( void ) noexcept;
 
-	void beginScene( float, float, float, float ) noexcept;
+	void beginScene( const float red, const float green, const float blue, const float alpha ) noexcept;
 	void endScene( void ) noexcept;
 
-	ID3D11Device* getDevice( void ) const noexcept;
-	ID3D11DeviceContext* getDeviceContext( void ) const noexcept;
+	const ID3D11Device* getDevice( void ) const noexcept;
+	const ID3D11DeviceContext* getDeviceContext( void ) const noexcept;
 
-	void getProjectMatrix( DirectX::XMMATRIX& ) noexcept;
-	void getWorldMatrix( DirectX::XMMATRIX& ) noexcept;
-	void getOrthoMatrix( DirectX::XMMATRIX& ) noexcept;
+	void getProjectionMatrix( _Out_ DirectX::XMMATRIX& projectionMatrix ) noexcept;
+	void getWorldMatrix( _Out_ DirectX::XMMATRIX& worldMatrix ) noexcept;
+	void getOrthoMatrix( _Out_ DirectX::XMMATRIX& orthoMatrix ) noexcept;
 
-	void getVideoCardInfo( char*, int ) noexcept;
+	void getVideoCardInfo( _Out_ const char* cardName, _Out_ int& memory ) noexcept;
 
 private:
 	bool						_vsyncEnable;
@@ -39,11 +39,4 @@ private:
 	DirectX::XMMATRIX			_projectionMatrix;
 	DirectX::XMMATRIX			_worldMatrix;
 	DirectX::XMMATRIX			_orthoMatrix;
-
-
-
-
-
-
-
 };

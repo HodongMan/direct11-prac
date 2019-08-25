@@ -1,6 +1,8 @@
 #pragma once
 
 
+class D3Object;
+
 class GraphicsManager
 {
 public:
@@ -19,6 +21,6 @@ private:
 
 	bool _isValid;
 
-
+	D3Object* _direct3D;
 
 };
