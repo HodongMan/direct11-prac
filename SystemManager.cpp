@@ -160,6 +160,7 @@ void SystemManager::initializeWindows( int& screenWidth, int& screenHeight ) noe
 	_applicationName = L"Hodong Dx11";
 
 	WNDCLASSEX wc;
+	ZeroMemory( &wc, sizeof( wc ) );
 
 	wc.style			= CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
 	wc.lpfnWndProc		= WndProc;
@@ -171,7 +172,7 @@ void SystemManager::initializeWindows( int& screenWidth, int& screenHeight ) noe
 	wc.hCursor			= LoadCursor( nullptr, IDC_ARROW );
 	wc.hbrBackground	= static_cast<HBRUSH>( GetStockObject( BLACK_BRUSH ) );
 	wc.lpszMenuName		= nullptr;
-	wc.lpszClassName	= nullptr;
+	wc.lpszClassName	= _applicationName;
 	wc.cbSize			= sizeof( WNDCLASSEX );
 
 	RegisterClassEx( &wc );
@@ -206,7 +207,7 @@ void SystemManager::initializeWindows( int& screenWidth, int& screenHeight ) noe
 
 	_hwnd = CreateWindowEx( WS_EX_APPWINDOW, _applicationName, _applicationName,
 							WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_POPUP,
-							positionX, positionY, screenWidth, screenHeight, nullptr, nullptr, _hInstance, nullptr);
+							positionX, positionY, screenWidth, screenHeight, nullptr, nullptr, _hInstance, nullptr );
 
 	ShowWindow( _hwnd, SW_SHOW );
 	SetForegroundWindow( _hwnd );
