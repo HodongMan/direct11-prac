@@ -22,7 +22,7 @@ public:
 	void getWorldMatrix( _Out_ DirectX::XMMATRIX& worldMatrix ) noexcept;
 	void getOrthoMatrix( _Out_ DirectX::XMMATRIX& orthoMatrix ) noexcept;
 
-	void getVideoCardInfo( _Out_ const char* cardName, _Out_ int& memory ) noexcept;
+	void getVideoCardInfo( char* cardName, _Out_ int& memory ) noexcept;
 
 private:
 	bool						_vsyncEnable;

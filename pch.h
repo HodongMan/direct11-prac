@@ -13,3 +13,4 @@
 
 #include <windows.h>
 #include "string.h"
+#include "AlignedAllocationPolicy.h"

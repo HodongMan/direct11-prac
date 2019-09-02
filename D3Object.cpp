@@ -381,9 +381,9 @@ void D3Object::getOrthoMatrix( DirectX::XMMATRIX & orthoMatrix ) noexcept
 	orthoMatrix = _orthoMatrix;
 }
 
-void D3Object::getVideoCardInfo( const char * cardName, int & memory ) noexcept
+void D3Object::getVideoCardInfo( char* cardName, int & memory ) noexcept
 {
-	//strcpy_s( cardName, static_cast<size_t>( 128 ), _videoCardDescription );
+	strcpy_s( cardName, 128, _videoCardDescription );
 	memory = _videoCardMemory;
 }
 
