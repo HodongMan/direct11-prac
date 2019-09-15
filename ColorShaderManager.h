@@ -1,6 +1,6 @@
 #pragma once
 
-class ColorShaderClass : public AlignedAllocationPolicy<16>
+class ColorShaderManager : public AlignedAllocationPolicy<16>
 {
 private:
 	struct MatrixBufferType
@@ -11,11 +11,11 @@ private:
 	};
 
 public:
-	ColorShaderClass( void );
-	ColorShaderClass( const ColorShaderClass& rhs );
-	~ColorShaderClass( void );
+	ColorShaderManager( void );
+	ColorShaderManager( const ColorShaderManager& rhs );
+	~ColorShaderManager( void );
 
-	bool					initialize( const ID3D11Device* device, HWND hWnd ) noexcept;
+	bool					initialize( _Out_ ID3D11Device* device, HWND hWnd ) noexcept;
 	void					shutdown( void ) noexcept;
 	bool					render( const ID3D11DeviceContext* deviceContext, 
 									const int indexCount,
@@ -24,15 +24,15 @@ public:
 									const DirectX::XMMATRIX projectionMatrix ) noexcept;
 
 private:
-	bool					initializeShader( const ID3D11Device* device, HWND hWnd, const WCHAR* vsFileName, const WCHAR* psFileName ) noexcept;
+	bool					initializeShader( _Out_ ID3D11Device* device, HWND hWnd, const WCHAR* vsFileName, const WCHAR* psFileName ) noexcept;
 	void					shutdownShader( void ) noexcept;
 	void					outputShaderErrorMessage( _Out_ ID3D10Blob* errorMessage, HWND hWnd, const WCHAR* shaderFileName ) const noexcept;
 	
-	bool					setShaderParameters( const ID3D11DeviceContext* deviceContext,
-												 const DirectX::XMMATRIX worldMatrix, 
-												 const DirectX::XMMATRIX viewMatrix,
-												 const DirectX::XMMATRIX projectionMatrix ) noexcept;
-	void					renderShader( const ID3D11DeviceContext* deviceContext, const int indexCount ) noexcept;
+	bool					setShaderParameters( _Inout_ ID3D11DeviceContext* deviceContext,
+												 _Inout_ DirectX::XMMATRIX worldMatrix, 
+												 _Inout_ DirectX::XMMATRIX viewMatrix,
+												 _Inout_ DirectX::XMMATRIX projectionMatrix ) noexcept;
+	void					renderShader( _Inout_ ID3D11DeviceContext* deviceContext, const int indexCount ) const noexcept;
 
 	ID3D11VertexShader*		m_vertexShader;
 	ID3D11PixelShader*		m_pixelShader;
