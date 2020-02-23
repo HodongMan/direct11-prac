@@ -130,6 +130,7 @@
     <ClInclude Include="D3Object.h" />
     <ClInclude Include="GraphicsManager.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="ModelObject.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="SystemManager.h" />
     <ClInclude Include="TypeDefined.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="GraphicsManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ModelObject.cpp" />
     <ClCompile Include="SystemManager.cpp" />
   </ItemGroup>
   <ItemGroup>

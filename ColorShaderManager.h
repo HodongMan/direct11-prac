@@ -17,7 +17,7 @@ public:
 
 	bool					initialize( _Out_ ID3D11Device* device, HWND hWnd ) noexcept;
 	void					shutdown( void ) noexcept;
-	bool					render( const ID3D11DeviceContext* deviceContext, 
+	bool					render( _Out_ ID3D11DeviceContext* deviceContext, 
 									const int indexCount,
 									const DirectX::XMMATRIX worldMatrix, 
 									const DirectX::XMMATRIX viewMatrix,

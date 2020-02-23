@@ -34,7 +34,7 @@ void ColorShaderManager::shutdown( void ) noexcept
 	shutdownShader();
 }
 
-bool ColorShaderManager::render( const ID3D11DeviceContext * deviceContext, const int indexCount, const DirectX::XMMATRIX worldMatrix, const DirectX::XMMATRIX viewMatrix, const DirectX::XMMATRIX projectionMatrix ) noexcept
+bool ColorShaderManager::render( ID3D11DeviceContext * deviceContext, const int indexCount, const DirectX::XMMATRIX worldMatrix, const DirectX::XMMATRIX viewMatrix, const DirectX::XMMATRIX projectionMatrix ) noexcept
 {
 	if ( false == setShaderParameters( deviceContext, worldMatrix, viewMatrix, projectionMatrix ) )
 	{
