@@ -24,7 +24,7 @@ public:
 									const DirectX::XMMATRIX projectionMatrix ) noexcept;
 
 private:
-	bool					initializeShader( _Out_ ID3D11Device* device, HWND hWnd, const WCHAR* vsFileName, const WCHAR* psFileName ) noexcept;
+	bool					initializeShader( _Out_ ID3D11Device* device, HWND hWnd, LPCWSTR vsFileName, LPCWSTR psFileName ) noexcept;
 	void					shutdownShader( void ) noexcept;
 	void					outputShaderErrorMessage( _Out_ ID3D10Blob* errorMessage, HWND hWnd, const WCHAR* shaderFileName ) const noexcept;
 	

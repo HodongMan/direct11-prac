@@ -15,8 +15,8 @@ public:
 	void beginScene( const float red, const float green, const float blue, const float alpha ) noexcept;
 	void endScene( void ) noexcept;
 
-	const ID3D11Device* getDevice( void ) const noexcept;
-	const ID3D11DeviceContext* getDeviceContext( void ) const noexcept;
+	ID3D11Device*				getDevice( void ) const noexcept;
+	ID3D11DeviceContext*		getDeviceContext( void ) const noexcept;
 
 	void getProjectionMatrix( _Out_ DirectX::XMMATRIX& projectionMatrix ) noexcept;
 	void getWorldMatrix( _Out_ DirectX::XMMATRIX& worldMatrix ) noexcept;

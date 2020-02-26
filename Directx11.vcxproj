@@ -90,6 +90,7 @@
       <EntryPointSymbol>
       </EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,10 +123,12 @@
       <EntryPointSymbol>
       </EntryPointSymbol>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlignedAllocationPolicy.h" />
+    <ClInclude Include="CameraManager.h" />
     <ClInclude Include="ColorShaderManager.h" />
     <ClInclude Include="D3Object.h" />
     <ClInclude Include="GraphicsManager.h" />
@@ -136,6 +139,7 @@
     <ClInclude Include="TypeDefined.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="ColorShaderManager.cpp" />
     <ClCompile Include="D3Object.cpp" />
     <ClCompile Include="GraphicsManager.cpp" />

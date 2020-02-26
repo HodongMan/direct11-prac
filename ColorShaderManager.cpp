@@ -26,7 +26,7 @@ ColorShaderManager::~ColorShaderManager( void )
 
 bool ColorShaderManager::initialize( ID3D11Device * device, HWND hWnd ) noexcept
 {
-	return initializeShader( device, hWnd, L"Color.vs", L"Color.ps" );
+	return initializeShader( device, hWnd, L"./Color.vs", L"./Color.ps" );
 }
 
 void ColorShaderManager::shutdown( void ) noexcept
@@ -46,7 +46,7 @@ bool ColorShaderManager::render( ID3D11DeviceContext * deviceContext, const int 
 	return true;
 }
 
-bool ColorShaderManager::initializeShader( ID3D11Device * device, HWND hWnd, const WCHAR * vsFileName, const WCHAR * psFileName ) noexcept
+bool ColorShaderManager::initializeShader( ID3D11Device * device, HWND hWnd, LPCWSTR vsFileName, LPCWSTR psFileName ) noexcept
 {
 	ID3D10Blob* errorMessage = nullptr;
 

@@ -48,6 +48,7 @@ int ModelObject::getIndexCount( void ) const noexcept
 
 bool ModelObject::initializeBuffers( ID3D11Device * device ) noexcept
 {
+	/*
 	m_vertexCount	= VERTEX_COUNT;
 	m_indexCount	= INDEX_COUNT;
 
@@ -77,9 +78,9 @@ bool ModelObject::initializeBuffers( ID3D11Device * device ) noexcept
 	vertexBufferDesc.StructureByteStride = 0;
 
 	D3D11_SUBRESOURCE_DATA	vertexData;
-	vertexData.pSysMem		= vertices.get();
-	vertexData.SysMemPitch	= 0;
-	vertexData.SysMemSlicePitch = 0;
+	vertexData.pSysMem				= vertices.get();
+	vertexData.SysMemPitch			= 0;
+	vertexData.SysMemSlicePitch		= 0;
 
 	if ( FAILED( device->CreateBuffer( &vertexBufferDesc, &vertexData, &m_vertexBuffer ) ) )
 	{
@@ -89,7 +90,7 @@ bool ModelObject::initializeBuffers( ID3D11Device * device ) noexcept
 	D3D11_BUFFER_DESC indexBufferDesc;
 
 	indexBufferDesc.Usage			= D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth		= sizeof( unsigned long ) * m_indexCount;
+	indexBufferDesc.ByteWidth		= sizeof( unsigned long ) * m_indexCount * 2 ;
 	indexBufferDesc.BindFlags		= D3D11_BIND_VERTEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags	= 0;
 	indexBufferDesc.MiscFlags		= 0;
@@ -104,9 +105,7 @@ bool ModelObject::initializeBuffers( ID3D11Device * device ) noexcept
 	{
 		return false;
 	}
-
-	return true;
-
+	*/
 	return true;
 }
 

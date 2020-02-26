@@ -356,12 +356,12 @@ void D3Object::endScene( void ) noexcept
 	}
 }
 
-const ID3D11Device* D3Object::getDevice( void ) const noexcept
+ID3D11Device* D3Object::getDevice( void ) const noexcept
 {
 	return _device;
 }
 
-const ID3D11DeviceContext * D3Object::getDeviceContext(void) const noexcept
+ID3D11DeviceContext * D3Object::getDeviceContext( void ) const noexcept
 {
 	return _deviceContext;
 }

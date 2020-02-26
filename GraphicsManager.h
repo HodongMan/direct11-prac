@@ -2,6 +2,9 @@
 
 
 class D3Object;
+class CameraManager;
+class ModelObject;
+class ColorShaderManager;
 
 class GraphicsManager
 {
@@ -17,10 +20,15 @@ public:
 	bool frame( void ) noexcept;
 
 private:
+
 	bool render( void ) noexcept;
 
-	bool _isValid;
+private:
 
-	D3Object* _direct3D;
+	bool				m_isValid;
+	D3Object*			m_direct3D;
+	CameraManager*		m_cameraManager;
+	ModelObject*		m_modelObject;
+	ColorShaderManager*	m_colorShaderManager;
 
 };
