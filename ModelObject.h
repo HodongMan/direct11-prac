@@ -2,7 +2,7 @@
 
 class ModelObject : public AlignedAllocationPolicy<16>
 {
-private:
+public:
 	struct VertexType
 	{
 		DirectX::XMFLOAT3 position;

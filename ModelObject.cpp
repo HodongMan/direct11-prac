@@ -48,12 +48,11 @@ int ModelObject::getIndexCount( void ) const noexcept
 
 bool ModelObject::initializeBuffers( ID3D11Device * device ) noexcept
 {
-	/*
 	m_vertexCount	= VERTEX_COUNT;
 	m_indexCount	= INDEX_COUNT;
 
-	std::unique_ptr<VertexType[]> vertices( new VertexType[VERTEX_COUNT] );
-	std::unique_ptr<unsigned long[]> indices( new unsigned long[INDEX_COUNT] );
+	std::unique_ptr<VertexType[]> vertices( new VertexType[ m_vertexCount ] );
+	std::unique_ptr<unsigned long[]> indices( new unsigned long[ m_indexCount ] );
 
 	vertices[0].position	= DirectX::XMFLOAT3( -1.0f, -1.0f, 0.0f );
 	vertices[0].color		= DirectX::XMFLOAT4( 0.0f, 1.0f, 0.0f, 1.0f );
@@ -61,51 +60,49 @@ bool ModelObject::initializeBuffers( ID3D11Device * device ) noexcept
 	vertices[1].position	= DirectX::XMFLOAT3( 0.0f, 1.0f, 0.0f );
 	vertices[1].color		= DirectX::XMFLOAT4( 0.0f, 1.0f, 0.0f, 1.0f );
 
-	vertices[2].position	= DirectX::XMFLOAT3( 1.0f, -1.0f, 0.0f );
-	vertices[2].color		= DirectX::XMFLOAT4( 0.0f, 1.0f, 0.0f, 1.0f );
+	vertices[2].position	= DirectX::XMFLOAT3( 1.0f, -1.0f, 0.0f );\
+	vertices[2].color		= DirectX::XMFLOAT4( 0.0f, 1.0f, 0.0f, 1.0f);
 
-	indices[0]				= 0;
-	indices[1]				= 1;
-	indices[2]				= 2;
+	indices[0] = 0;  
+	indices[1] = 1;  
+	indices[2] = 2;  
 
 	D3D11_BUFFER_DESC vertexBufferDesc;
+    vertexBufferDesc.Usage					= D3D11_USAGE_DEFAULT;
+    vertexBufferDesc.ByteWidth				= sizeof( VertexType ) * m_vertexCount;
+    vertexBufferDesc.BindFlags				= D3D11_BIND_VERTEX_BUFFER;
+    vertexBufferDesc.CPUAccessFlags			= 0;
+    vertexBufferDesc.MiscFlags				= 0;
+	vertexBufferDesc.StructureByteStride	= 0;
 
-	vertexBufferDesc.Usage			= D3D11_USAGE_DEFAULT;
-	vertexBufferDesc.ByteWidth		= sizeof( VertexType ) * m_vertexCount;
-	vertexBufferDesc.BindFlags		= D3D11_BIND_VERTEX_BUFFER;
-	vertexBufferDesc.CPUAccessFlags = 0;
-	vertexBufferDesc.MiscFlags		= 0;
-	vertexBufferDesc.StructureByteStride = 0;
+	D3D11_SUBRESOURCE_DATA vertexData;
+    vertexData.pSysMem						= vertices.get();
+	vertexData.SysMemPitch					= 0;
+	vertexData.SysMemSlicePitch				= 0;
 
-	D3D11_SUBRESOURCE_DATA	vertexData;
-	vertexData.pSysMem				= vertices.get();
-	vertexData.SysMemPitch			= 0;
-	vertexData.SysMemSlicePitch		= 0;
-
-	if ( FAILED( device->CreateBuffer( &vertexBufferDesc, &vertexData, &m_vertexBuffer ) ) )
+	if( FAILED( device->CreateBuffer( &vertexBufferDesc, &vertexData, &m_vertexBuffer ) ) )
 	{
 		return false;
 	}
 
 	D3D11_BUFFER_DESC indexBufferDesc;
-
-	indexBufferDesc.Usage			= D3D11_USAGE_DEFAULT;
-	indexBufferDesc.ByteWidth		= sizeof( unsigned long ) * m_indexCount * 2 ;
-	indexBufferDesc.BindFlags		= D3D11_BIND_VERTEX_BUFFER;
-	indexBufferDesc.CPUAccessFlags	= 0;
-	indexBufferDesc.MiscFlags		= 0;
-	indexBufferDesc.StructureByteStride = 0;
+    indexBufferDesc.Usage					= D3D11_USAGE_DEFAULT;
+    indexBufferDesc.ByteWidth				= sizeof( unsigned long ) * m_indexCount;
+    indexBufferDesc.BindFlags				= D3D11_BIND_INDEX_BUFFER;
+    indexBufferDesc.CPUAccessFlags			= 0;
+    indexBufferDesc.MiscFlags				= 0;
+	indexBufferDesc.StructureByteStride		= 0;
 
 	D3D11_SUBRESOURCE_DATA indexData;
-	indexData.pSysMem				= indices.get();
-	indexData.SysMemPitch			= 0;
-	indexData.SysMemSlicePitch		= 0;
+    indexData.pSysMem						= indices.get();
+	indexData.SysMemPitch					= 0;
+	indexData.SysMemSlicePitch				= 0;
 
-	if ( FAILED( device->CreateBuffer( &indexBufferDesc, &indexData, &m_indexBuffer ) ) )
+	if(	FAILED( device->CreateBuffer( &indexBufferDesc, &indexData, &m_indexBuffer ) ) )
 	{
 		return false;
 	}
-	*/
+
 	return true;
 }
 
@@ -126,8 +123,8 @@ void ModelObject::shutdownBuffers( void ) noexcept
 
 void ModelObject::renderBuffer( _Out_ ID3D11DeviceContext * deviceContext ) noexcept
 {
-	unsigned int stride = sizeof( VertexType );
-	unsigned int offset = 0;
+	const unsigned int stride = sizeof( VertexType ) * 2;
+	const unsigned int offset = 0;
 
 	deviceContext->IASetVertexBuffers( 0, 1, &m_vertexBuffer, &stride, &offset );
 	deviceContext->IASetIndexBuffer( m_indexBuffer, DXGI_FORMAT_R32_UINT, 0 );
