@@ -128,29 +128,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AlignedAllocationPolicy.h" />
-    <ClInclude Include="CameraManager.h" />
-    <ClInclude Include="ColorShaderManager.h" />
-    <ClInclude Include="D3Object.h" />
-    <ClInclude Include="GraphicsManager.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="ModelObject.h" />
+    <ClInclude Include="Application.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="SystemManager.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderingWindow.h" />
+    <ClInclude Include="RenderingWindowManager.h" />
     <ClInclude Include="TypeDefined.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CameraManager.cpp" />
-    <ClCompile Include="ColorShaderManager.cpp" />
-    <ClCompile Include="D3Object.cpp" />
-    <ClCompile Include="GraphicsManager.cpp" />
-    <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ModelObject.cpp" />
-    <ClCompile Include="SystemManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Color.ps" />
-    <None Include="Color.vs" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderingWindow.cpp" />
+    <ClCompile Include="RenderingWindowManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

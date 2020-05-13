@@ -1,4 +1,6 @@
+#pragma once
 
+#include "pch.h"
 
 #define KeyTypeLength			256
 #define FULL_SCREEN				false
@@ -8,3 +10,7 @@
 
 #define VERTEX_COUNT			3
 #define INDEX_COUNT				3
+
+
+
+using DeviceContextComPtr = Microsoft::WRL::ComPtr<ID3D11DeviceContext>;

@@ -1,24 +1,33 @@
-#include "SystemManager.h"
+#include "pch.h"
+
+#include "RenderingWindowManager.h"
 
 int APIENTRY wWinMain( _In_ HINSTANCE hInstance, 
 					   _In_opt_ HINSTANCE hPrevInstance,
 					   _In_ LPWSTR lpCmdLine, 
 					   _In_ int mCmdShow )
 {
-	SystemManager* systemManager = new SystemManager();
-	if ( nullptr == systemManager )
+	RenderingWindowManager manager;
+
+	manager.initialize();
+
+	MSG msg;
+
+	while( true )
 	{
-		return -1;
+		while ( PeekMessage( &msg, NULL, 0, 0, PM_REMOVE ) )
+		{ 
+			if ( msg.message == WM_QUIT )
+			{
+				return true;
+			}
+
+			TranslateMessage( &msg );
+			DispatchMessage( &msg );
+		}
 	}
 
-	if ( true == systemManager->initialize() )
-	{
-		systemManager->run();
-	}
+	manager.shutdown();
 
-	systemManager->shutDown( true );
-	delete systemManager;
-	systemManager = nullptr;
-	
 	return 0;
 }
